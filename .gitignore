@@ -1,0 +1,18 @@
+# Ignore node modules
+/node_modules
+
+# Ignore build output
+/build
+
+# Ignore editor files
+.vscode/
+.idea/
+
+# Ignore log files
+*.log
+*.log.*
+logs/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
