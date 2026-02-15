@@ -5,14 +5,16 @@ A clean, professional car wash website built with Next.js and Tailwind CSS. **10
 ## ✨ Features
 
 - 🎨 Modern, clean design with blue/water theme
+- 📸 **Animated hero slideshow** (4-5 images, auto-rotating)
 - 📱 Fully responsive (mobile-first design)
 - 💰 Service packages with clear pricing (KES 500, 800, 1,200)
-- ✉️ Simple contact form (client-side only, no email backend)
+- 📧 **Contact form with email integration** (Resend API)
+- 🗺️ **Google Maps embed** showing location
+- ⭐ **Google Reviews integration** (real customer reviews)
+- ❓ **FAQ accordion** (toggle/collapsible)
 - 📞 Clickable phone numbers and email addresses
-- ⭐ Customer testimonials section
-- ❓ FAQ section
+- ✉️ Professional email notifications for inquiries
 - 🚫 **NO complex booking system**
-- 🚫 **NO backend or API routes**
 - 🚫 **NO database needed**
 
 ## 🚀 Quick Start
@@ -22,12 +24,28 @@ A clean, professional car wash website built with Next.js and Tailwind CSS. **10
 npm install
 ```
 
-2. **Run development server:**
+2. **Configure environment variables:**
+```bash
+# Copy the example file
+cp .env.example .env.local
+
+# Edit .env.local and add your API keys
+# See SETUP_GUIDE.md for detailed instructions
+```
+
+3. **Add hero images:**
+   - Place 4-5 images in `public/images/` folder
+   - Name them: `hero-1.jpg`, `hero-2.jpg`, etc.
+   - See `SETUP_GUIDE.md` for image requirements
+
+4. **Run development server:**
 ```bash
 npm run dev
 ```
 
-3. **Open in browser:** [http://localhost:3000](http://localhost:3000)
+5. **Open in browser:** [http://localhost:3000](http://localhost:3000)
+
+📚 **Read `SETUP_GUIDE.md` for complete setup instructions!**
 
 ## 📦 Deploy to Vercel (FREE)
 
