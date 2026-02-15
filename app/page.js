@@ -6,6 +6,37 @@ import { Menu, X, Phone, Mail, MapPin, Clock, Star, Car, Droplets, Shield, Check
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  })
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
+  const handleFormChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    setFormSubmitted(true)
+    // Reset form after 5 seconds
+    setTimeout(() => {
+      setFormSubmitted(false)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      })
+    }, 5000)
+  }
 
   const services = [
     {
@@ -84,10 +115,10 @@ export default function Home() {
               <a href="#faq" className="text-gray-700 hover:text-primary transition-colors">FAQ</a>
             </nav>
 
-            <div className="hidden md:flex items-center space-x-4">
+            <a href="tel:+254712345678" className="hidden md:flex items-center space-x-4 hover:text-primary transition-colors">
               <Phone className="h-5 w-5 text-primary" />
               <span className="text-gray-700">+254 712 345 678</span>
-            </div>
+            </a>
 
             {/* Mobile menu button */}
             <button
@@ -107,10 +138,10 @@ export default function Home() {
                 <a href="#about" className="text-gray-700 hover:text-primary">About</a>
                 <a href="#contact" className="text-gray-700 hover:text-primary">Contact</a>
                 <a href="#faq" className="text-gray-700 hover:text-primary">FAQ</a>
-                <div className="flex items-center space-x-2 pt-4 border-t">
+                <a href="tel:+254712345678" className="flex items-center space-x-2 pt-4 border-t hover:text-primary transition-colors">
                   <Phone className="h-4 w-4 text-primary" />
                   <span className="text-gray-700">+254 712 345 678</span>
-                </div>
+                </a>
               </nav>
             </div>
           )}
@@ -130,8 +161,8 @@ export default function Home() {
                 Quality service, competitive prices, and customer satisfaction guaranteed.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="btn-primary">Book Now</button>
-                <button className="btn-secondary">View Services</button>
+                <a href="#contact" className="btn-primary text-center">Book Now</a>
+                <a href="#services" className="btn-secondary text-center">View Services</a>
               </div>
             </div>
             <div className="relative">
@@ -169,7 +200,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <button className="btn-primary w-full">Choose Package</button>
+                  <a href="#contact" className="btn-primary w-full inline-block text-center">Choose Package</a>
                 </div>
               )
             })}
@@ -279,20 +310,20 @@ export default function Home() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
               <div className="space-y-6">
-                <div className="flex items-center">
+                <a href="tel:+254712345678" className="flex items-center hover:opacity-80 transition-opacity">
                   <Phone className="h-6 w-6 text-primary mr-4" />
                   <div>
                     <p className="font-semibold text-gray-900">Phone</p>
                     <p className="text-gray-600">+254 712 345 678</p>
                   </div>
-                </div>
-                <div className="flex items-center">
+                </a>
+                <a href="mailto:info@rupamallcarwash.co.ke" className="flex items-center hover:opacity-80 transition-opacity">
                   <Mail className="h-6 w-6 text-primary mr-4" />
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600">info@Rupamallcarwash.co.ke</p>
+                    <p className="text-gray-600">info@rupamallcarwash.co.ke</p>
                   </div>
-                </div>
+                </a>
                 <div className="flex items-center">
                   <MapPin className="h-6 w-6 text-primary mr-4" />
                   <div>
@@ -312,25 +343,81 @@ export default function Home() {
             
             <div className="bg-gray-50 rounded-lg p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+
+              {formSubmitted ? (
+                <div className="bg-green-50 border-2 border-green-500 rounded-lg p-8 text-center">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h4>
+                  <p className="text-gray-600">We've received your message and will contact you soon.</p>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <input type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-                </div>
-                <button type="submit" className="btn-primary w-full">Send Message</button>
-              </form>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleFormChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleFormChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleFormChange}
+                      required
+                      placeholder="+254 712 345 678"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Service Interest *</label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleFormChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="Basic Wash - KES 500">Basic Wash - KES 500</option>
+                      <option value="Premium Wash - KES 800">Premium Wash - KES 800</option>
+                      <option value="Deluxe Package - KES 1,200">Deluxe Package - KES 1,200</option>
+                      <option value="Mobile Service">Mobile Service</option>
+                      <option value="Just Inquiring">Just Inquiring</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                    <textarea
+                      rows={4}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleFormChange}
+                      required
+                      placeholder="Tell us about your car and any specific requirements..."
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    ></textarea>
+                  </div>
+                  <button type="submit" className="btn-primary w-full">Send Message</button>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -358,8 +445,8 @@ export default function Home() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
               <div className="space-y-2 text-gray-400">
-                <p>+254 712 345 678</p>
-                <p>info@Rupamallcarwash.co.ke</p>
+                <a href="tel:+254712345678" className="block hover:text-white transition-colors">+254 712 345 678</a>
+                <a href="mailto:info@rupamallcarwash.co.ke" className="block hover:text-white transition-colors">info@rupamallcarwash.co.ke</a>
                 <p>Westlands, Nairobi</p>
               </div>
             </div>

@@ -3,8 +3,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Supreme Car Wash - Professional Car Washing Services in Nairobi',
-  description: 'Professional car wash services in Nairobi. Quality cleaning, affordable prices, exceptional service.',
+  title: 'Rupa\'s Mall Car Wash - Professional Car Washing Services in Nairobi',
+  description: 'Professional car wash services in Westlands, Nairobi. Quality cleaning, affordable prices, exceptional service. Basic Wash KES 500, Premium KES 800, Deluxe KES 1,200.',
 }
 
 export default function RootLayout({ children }) {
