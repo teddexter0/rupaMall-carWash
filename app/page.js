@@ -3,6 +3,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { Menu, X, Phone, Mail, MapPin, Clock, Star, Car, Droplets, Shield, CheckCircle } from 'lucide-react'
+import { carwashConfig } from '../config/carwash'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
